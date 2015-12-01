@@ -1,0 +1,39 @@
+.nav
+	$activeColor = #0ba6b8
+	font-size 0
+
+	&__link
+		display inline-block
+		padding: 0 18px;
+		height 35px
+		line-height 35px
+		font-size 11px
+		text-transform uppercase
+		text-decoration none
+		color #a4a4a4
+		transition .2s
+
+		&:hover
+		&:focus
+			color #fff
+			background #393939
+			outline 0
+
+		&_active
+		&_active:hover
+			position relative
+			color #fff
+			background $activeColor
+
+			&:after
+				content ""
+				position absolute
+				top 100%
+				left 0
+				right 0
+				margin auto
+				width 0
+				height 0
+				border 6px solid transparent
+				border-top: 7px solid $activeColor
+				border-bottom 0

@@ -1,0 +1,90 @@
+.pull-left
+	float left
+
+.pull-right
+	float right
+
+
+cf()
+	&:before
+	&:after
+		content ""
+		display table
+
+	&:after
+		clear both
+
+
+.cf
+	cf()
+
+
+newGrid(options)
+
+	.container
+		margin-left auto
+		margin-right auto
+		max-width: options.$maxWidth if options.$maxWidth
+		min-width: options.$minWidth if options.$minWidth
+		padding-left: (options.$gutter/2)
+		padding-right: (options.$gutter/2)
+
+	.cols
+		margin-left: -(options.$gutter/2)
+		margin-right: -(options.$gutter/2)
+		cf()
+
+		&:after
+			content ""
+			display table
+			clear both
+
+	.col
+		position relative
+		display block
+		box-sizing border-box
+		padding-left: (options.$gutter/2)
+		padding-right: (options.$gutter/2)
+
+
+	// function for creating cols
+	generate-cols($size-name, $cols)
+
+		[class*=\"col_{$size-name}"]
+			float left
+
+		.col_{$size-name}-center
+			float none
+			margin-left auto
+			margin-right auto
+
+		.col_{$size-name}-reset
+			float left
+			margin-left 0
+			margin-right 0
+
+		for $i in (1..$cols)
+			.col_{$size-name}-{$i}-{$cols}
+				width ($i/$cols)*100%
+
+		for $i in (0..$cols)
+			.col_{$size-name}-left-{$i}-{$cols}
+				margin-left ($i/$cols)*100%
+
+			.col_{$size-name}-right-{$i}-{$cols}
+				margin-right ($i/$cols)*100%
+
+			.col_{$size-name}-push-{$i}-{$cols}
+				left ($i/$cols)*100%
+
+			.col_{$size-name}-pull-{$i}-{$cols}
+				right ($i/$cols)*100%
+	// end function for creating cols
+
+
+	for $key, $value in options.$mediaQueries
+		if !$value
+			generate-cols($key, options.$cols)
+		else
+			@media (min-width: $value)
+				generate-cols($key, options.$cols)

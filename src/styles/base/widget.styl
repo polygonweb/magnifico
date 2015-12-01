@@ -1,0 +1,30 @@
+.widget
+
+	&__head
+		padding 10px 20px
+		border 1px solid #c8c8c8
+		background #ececec
+		background linear-gradient(to bottom, #fff 0%, #d8d8d8 100%)
+		-ms-filter "progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d8d8d8',GradientType=0 )"
+
+
+	&__title
+		margin 0
+		padding 0
+		font-size 13px
+		line-height 2
+		font-weight bold
+		text-transform uppercase
+
+	&__body
+		background #fff
+
+	&:after
+		content ""
+		display block
+		height 11px
+		background #353535
+		border 1px solid #484848
+
+	&_gutter &__body
+		padding 20px

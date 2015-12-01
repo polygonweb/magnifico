@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "browser-sync": "*",
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-stylus": "*",
+    "gulp-swig": "*",
+    "gulp-util": "*",
+    "gulp-watch": "*"
+  }
+}
